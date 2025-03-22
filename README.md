@@ -1,6 +1,6 @@
 # SSLDM: Semi-Supervised Learning with Latent Diffusion Models for 2D CT Contrast Enhanced Slice Generation
 The implementation of the College Student Research Scholarship, NSC plan.
-The main goal of this project is to generate 2D CT slices form images without intravenous contrast agent injection to images with intravenous contrast agent injection. We provide two settings for the evaluation in Section 4 of the report. The implementation based on the Pytorch framework of the work "URL"
+The main goal of this project is to generate 2D CT slices form images without intravenous contrast agent injection to images with intravenous contrast agent injection. We provide two settings for the evaluation in Section 4 of the report. The implementation based on the Pytorch framework of the work [latent-diffusion](<https://github.com/CompVis/latent-diffusion>).
 ## Dataset
 In this task, paired source dataset with the same size is prepared, the first one is the dataset with intravenous contrast agent injection, and the second one is the dataset without intravenous contrast agent injection. The dataset is better fowllow the format of nameing as follows:
 ```

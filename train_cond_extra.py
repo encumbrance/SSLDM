@@ -94,10 +94,6 @@ if __name__ == "__main__":
     2. Use Dataset convert -to get label set of A_r, call A_r_cond2label
     3. Use Dataset convert to get generate result of A_r, call A_r_infer
     '''
-    # trainset_path = "/mnt/sdb1/audi/diffusion/latent-diffusion/data/manual_heart_iv_4seg_train_match_5_gen"
-    # trainset_label_path = "/mnt/sdb1/audi/diffusion/latent-diffusion/data/manual_heart_iv_4seg_train_5_cond2label"
-    # valset_path = "/mnt/sdb1/audi/diffusion/latent-diffusion/data/manual_heart_iv_4seg_val_match_5_gen"
-    # valset_label_path = "/mnt/sdb1/audi/diffusion/latent-diffusion/data/manual_heart_iv_4seg_val_5_cond2label"
 
     trainset_path = None
     trainset_label_path = None

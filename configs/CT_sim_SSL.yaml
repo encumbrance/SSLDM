@@ -9,7 +9,7 @@ model:
     loss_type: l2
     first_stage_key: image
     cond_stage_key: hint
-    ckpt_path: pretrained/ldm_models/5_pct.ckpt
+    ckpt_path: #pretrained latent diffusion model with labeled dataset
     image_size: 128
     channels: 3
     concat_mode: true
@@ -37,7 +37,7 @@ model:
         embed_dim: 3
         n_embed: 8192
         monitor: val/loss
-        ckpt_path: pretrained/first_stage_models/model.ckpt
+        ckpt_path: #path to the pretrained VQ-VAE model
         ddconfig:
           double_z: false
           z_channels: 3
@@ -76,7 +76,7 @@ model:
         - 2
         - 2
         num_head_channels: 16
-        ckpt_path: pretrained/cond_ext_models/best_model.pth
+        ckpt_path: #path to the pretrained cond_extracter model
 data:
   target: main.DataModuleFromConfig
   params:
@@ -86,16 +86,16 @@ data:
     train:
       target: data.CT_sim_SSCL.CT_sim_SRTrain_SSCL
       params:
-        path_target: data/manual_heart_iv_4seg_train
-        path_cond: data/manual_heart_no_iv_4seg_train
-        path_cond_l: data/manual_heart_iv_4seg_train_match_5
-        path_label: data/manual_heart_iv_4seg_train_5_cond2label
-        path_label_u: data/manual_heart_no_iv_4seg_train_cond2label
+        path_target:  #src dataset with intravenous administration of contrast agent
+        path_cond:  #src dataset without intravenous administration of contrast agent
+        path_cond_l:  #HU-transfomation dataset using Dataset_convert.py to get
+        path_label:  #label dataset converted from src iv labeled dataset
+        path_label_u:  #label dataset converted from src non-iv dataset
     validation:
       target: data.CT_sim_SSCL.CT_sim_SRVal_SSCL
       params:
-        path_target: data/manual_heart_iv_4seg_val
-        path_cond: data/manual_heart_no_iv_4seg_val
-        path_cond_l: data/manual_heart_iv_4seg_val_match_5
-        path_label: data/manual_heart_iv_4seg_val_5_cond2label
-        path_label_u: data/manual_heart_no_iv_4seg_val_cond2label
+        path_target: 
+        path_cond: 
+        path_cond_l: 
+        path_label: 
+        path_label_u: 
