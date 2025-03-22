@@ -1,0 +1,78 @@
+model:
+  base_learning_rate: 1.0e-06
+  target: ldm.models.diffusion.ddpm.LatentDiffusion
+  params:
+    linear_start: 0.0015
+    linear_end: 0.0155
+    log_every_t: 100
+    timesteps: 1000
+    loss_type: l2
+    first_stage_key: image
+    cond_stage_key: LR_image
+    image_size: 128
+    channels: 3
+    concat_mode: true
+    cond_stage_trainable: true
+    unet_config:
+      target: ldm.modules.diffusionmodules.openaimodel.UNetModel
+      params:
+        image_size: 128
+        in_channels: 19
+        out_channels: 3
+        model_channels: 160
+        attention_resolutions:
+        - 16
+        - 8
+        num_res_blocks: 2
+        channel_mult:
+        - 1
+        - 2
+        - 4
+        - 4
+        num_head_channels: 32
+    first_stage_config:
+      target: ldm.models.autoencoder.VQModelInterface
+      params:
+        embed_dim: 3
+        n_embed: 8192
+        monitor: val/rec_loss
+        ckpt_path: pretrained/first_stage_models/model.ckpt
+        ddconfig:
+          double_z: false
+          z_channels: 3
+          resolution: 256
+          in_channels: 3
+          out_ch: 3
+          ch: 128
+          ch_mult:
+          - 1
+          - 2
+          - 4
+          num_res_blocks: 2
+          attn_resolutions: []
+          dropout: 0.0
+        lossconfig:
+          target: torch.nn.Identity 
+    cond_stage_config:
+      target: models.class_util.dense_block
+      params:
+        hint_channels: 3
+        model_channels: 16
+        dims: 2
+data:
+  target: main.DataModuleFromConfig
+  params:
+    batch_size: 4
+    wrap: false
+    num_workers: 12
+    train:
+      target: data.CT_sim.CT_sim_SRTrain
+      params:
+        cond_path:  data/manual_heart_iv_4seg_train_match
+        target_path: data/manual_heart_iv_4seg_train
+    validation:
+      target: data.CT_sim.CT_sim_SRValidation
+      params:
+        cond_path: data/manual_heart_iv_4seg_val_match
+        target_path: data/manual_heart_iv_4seg_val
+    
