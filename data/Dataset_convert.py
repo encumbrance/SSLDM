@@ -30,7 +30,7 @@ def data_partition(src, ratio=0.05):
 
 
 def cond2label(src):
-    save_path = src + "_cond2label_test"
+    save_path = src + "_c2l"
     os.makedirs(save_path, exist_ok=True)
 
     files = os.listdir(src)

@@ -21,14 +21,14 @@ dataset
 ### LDM
 Please refer to the referecd work [latent-diffusion](<https://github.com/CompVis/latent-diffusion>) to get familiar with the LDM model and get the pretrained weights of the first stage encoder.
 ### Dataset
-In this setting, we only need the dataset converted under the HU-based transformation from the source non-iv dataset and iv-dataset and then use it to replace the original non-contrast dataset in the SSLDM model. You can use the `Dataset_convert.py`  and refer the config `configs/CT_sim.yaml` to get the details about the converted dataset.
+In this setting, we only need the dataset converted under the HU-based transformation from the source non-iv dataset and iv-dataset and then use it to replace the original non-contrast dataset in the SSLDM model. You can use the `Dataset_convert.py`  and refer the config `configs/CT_sim.yaml` datasets postfix to get the details about converting dataset.
 ### Training
 ```
 CUDA_VISIBLE_DEVICES=0 python main.py --base configs/CT_sim.yaml -t --gpus 0,
 ```
 ## SSLDM with  labeled data and unlabeled data
 ### Dataset
-In the setting, we need the dataset with partition of labeled data and unlabeled data. We also need the label data to train the condtiton extractor. You can use the `Dataset_convert.py` and refer the config `configs/CT_sim_SSL.yaml`to get all the needed dataset from the original two datasets.
+In the setting, we need the dataset with partition of labeled data and unlabeled data. We also need the label data to train the condtiton extractor. You can use the `Dataset_convert.py` and refer the config `configs/CT_sim_SSL.yaml` datasets postfix to get all the needed dataset converted from the original two datasets.
 
 ### Condiction exracter and pretrained weights
 In the setting, we need the pretrained weights of the HU-based trasnformation upon the  LDM and the following  condiction extractor. Then copy them into the SSLDM model as the initial weights by specifying in the config `configs/CT_sim_SSL.yaml`. 

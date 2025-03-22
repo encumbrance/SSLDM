@@ -68,8 +68,8 @@ data:
     train:
       target: data.CT_sim.CT_sim_SRTrain
       params:
-        cond_path:   #dataset afeter HU-based transformation
-        target_path:  #dataset with intravenous administration of contrast agent
+        cond_path:   #dataset afeter HU-based transformation (e.g train_iv_match)
+        target_path:  #dataset with intravenous administration of contrast agent (e.g train_iv)
     validation:
       target: data.CT_sim.CT_sim_SRValidation
       params:

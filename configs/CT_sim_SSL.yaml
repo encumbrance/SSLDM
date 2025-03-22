@@ -86,15 +86,15 @@ data:
     train:
       target: data.CT_sim_SSCL.CT_sim_SRTrain_SSCL
       params:
-        path_target:  #src dataset with intravenous administration of contrast agent
-        path_cond:  #src dataset without intravenous administration of contrast agent
-        path_cond_l:  #HU-transfomation dataset using Dataset_convert.py to get
-        path_label:  #label dataset converted from src iv labeled dataset
-        path_label_u:  #label dataset converted from src non-iv dataset
+        path_target:  #src dataset with intravenous administration of contrast agent (e.g train_iv)
+        path_cond:  #src dataset without intravenous administration of contrast agent (e.g train_no_iv)
+        path_cond_l:  #HU-transfomation dataset using Dataset_convert.py to get (e.g train_iv_match_r)
+        path_label:  #label dataset converted from src iv labeled dataset (e.g train_iv_r_c2l)
+        path_label_u:  #label dataset converted from src non-iv dataset (e.g train_no_iv_c2l)
     validation:
       target: data.CT_sim_SSCL.CT_sim_SRVal_SSCL
       params:
-        path_target: 
+        path_target:
         path_cond: 
         path_cond_l: 
         path_label: 
